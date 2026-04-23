@@ -1,9 +1,9 @@
 steps:
-  - name: 'node:18'
+  - name: 'node:22'
     entrypoint: npm
     args: ['install']
 
-  - name: 'node:18'
+  - name: 'node:22'
     entrypoint: npm
     args: ['run', 'build']
 
@@ -23,7 +23,3 @@ steps:
       - '-h'
       - 'Cache-Control:no-cache, no-store'
       - 'gs://vela-site-prod/index.html'
-
-# Add this section below:
-options:
-  logging: CLOUD_LOGGING_ONLY
