@@ -1,0 +1,25 @@
+steps:
+  - name: 'node:18'
+    entrypoint: npm
+    args: ['install']
+
+  - name: 'node:18'
+    entrypoint: npm
+    args: ['run', 'build']
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '-d'
+      - 'dist/'
+      - 'gs://vela-site-prod'
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - '-m'
+      - 'setmeta'
+      - '-h'
+      - 'Cache-Control:no-cache, no-store'
+      - 'gs://vela-site-prod/index.html'
