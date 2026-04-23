@@ -23,3 +23,7 @@ steps:
       - '-h'
       - 'Cache-Control:no-cache, no-store'
       - 'gs://vela-site-prod/index.html'
+
+
+options:
+  logging: CLOUD_LOGGING_ONLY
